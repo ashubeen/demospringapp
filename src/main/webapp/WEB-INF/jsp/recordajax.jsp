@@ -57,10 +57,10 @@
             //multiselect: true, //Allow multiple selecting
             //defaultSorting: 'firstName ASC', //Set default sorting
             actions: {
-                listAction: '/demospringapp/demospringapp/main/record/crud',//REST CALL
-                createAction: '/demospringapp/demospringapp/main/record/add',
-                updateAction: '/demospringapp/demospringapp/main/record/edit',
-                deleteAction: '/demospringapp/demospringapp/main/record/delete'
+                listAction: '<c:url value="/main/record/crud"/>',//REST CALL
+                createAction: '<c:url value="/main/record/add"/>',
+                updateAction: '<c:url value="/main/record/edit"/>',
+                deleteAction: '<c:url value="/main/record/delete"/>'
             },
             fields: {
                 id: {
@@ -78,7 +78,7 @@
                     create: false, 
                     display: function (personData) { 
                         //Create an image that will be used to open child table 
-                        var $img = $('<img src="/demospringapp/resources/Content/images/Misc/creditcard.png" title="Add Credit Cards" height="22px" width="24"/>'); 
+                        var $img = $('<img src=<c:url value="/resources/Content/images/Misc/creditcard.png"/> title="Add Credit Cards" height="22px" width="24"/>'); 
                         //Open child table when user clicks the image 
                         $img.click(function () { 
                             $('#PersonTable').jtable('openChildTable', 
@@ -86,10 +86,11 @@
                                     { 
                                         title: personData.record.firstName + ' - Credit Cards', 
                                         actions: { 
-                                            listAction: '/demospringapp/demospringapp/main/creditcard/listCreditCard?id=' + personData.record.id, 
-                                            deleteAction: '/demospringapp/demospringapp/main/creditcard/deleteCreditCard', 
-                                            updateAction: '/demospringapp/demospringapp/main/creditcard/listCreditCard?id=' + personData.record.id, 
-                                            createAction: '/demospringapp/demospringapp/main/creditcard/addCreditCard?id=' + personData.record.id
+                                            listAction: '<c:url value="/main/creditcard/listCreditCard?id="/>' + personData.record.id, 
+                                            deleteAction: '<c:url value="/main/creditcard/deleteCreditCard"/>', 
+                                            updateAction: '<c:url value="/main/creditcard/listCreditCard?id="/>' + personData.record.id, 
+                                            createAction: '<c:url value="/main/creditcard/addCreditCard?id="/>' + personData.record.id
+                                            
                                         }, 
                                         fields: { 
                                         	creditId: { 
